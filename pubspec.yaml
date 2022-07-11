@@ -15,8 +15,7 @@ dependencies:
   code_builder: ^4.1.0
   dart_style: ^2.1.0
   auto_route:
-    ^2.4.1
-#    path: ../auto_route
+    git: https://github.com/PT-Jojonomic-Indonesia/auto_route-2.4.2
 
 
 dev_dependencies:
