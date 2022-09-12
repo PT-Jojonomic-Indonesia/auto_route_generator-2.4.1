@@ -10,7 +10,7 @@ environment:
 dependencies:
   build: ^2.1.0
   source_gen: ^1.1.0
-  analyzer: ^4.7.0
+  analyzer: ^2.0.0
   path: ^1.8.0
   build_runner: ^2.1.2
   code_builder: ^4.1.0
