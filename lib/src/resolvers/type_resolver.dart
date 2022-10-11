@@ -58,12 +58,12 @@ class TypeResolver {
     final importableTypes = <ImportableType>[];
     if (typeToCheck is ParameterizedType) {
       for (DartType type in typeToCheck.typeArguments) {
-        if (type.element is TypeParameterElement) {
+        if (type.element2 is TypeParameterElement) {
           importableTypes.add(ImportableType(name: 'dynamic'));
         } else {
           importableTypes.add(ImportableType(
-            name: type.element?.name ?? 'void',
-            import: resolveImport(type.element),
+            name: type.element2?.name ?? 'void',
+            import: resolveImport(type.element2),
             typeArguments: _resolveTypeArguments(type),
           ));
         }
@@ -76,9 +76,9 @@ class TypeResolver {
     final displayName = function.displayName.replaceFirst(RegExp('^_'), '');
     var functionName = displayName;
     Element elementToImport = function;
-    if (function.enclosingElement is ClassElement) {
-      functionName = '${function.enclosingElement.displayName}.$displayName';
-      elementToImport = function.enclosingElement;
+    if (function.enclosingElement3 is ClassElement) {
+      functionName = '${function.enclosingElement3.displayName}.$displayName';
+      elementToImport = function.enclosingElement3;
     }
     return ImportableType(
       name: functionName,
@@ -88,9 +88,9 @@ class TypeResolver {
 
   ImportableType resolveType(DartType type) {
     return ImportableType(
-      name: type.element?.name ?? type.getDisplayString(withNullability: false),
+      name: type.element2?.name ?? type.getDisplayString(withNullability: false),
       isNullable: type.nullabilitySuffix == NullabilitySuffix.question,
-      import: resolveImport(type.element),
+      import: resolveImport(type.element2),
       typeArguments: _resolveTypeArguments(type),
     );
   }
